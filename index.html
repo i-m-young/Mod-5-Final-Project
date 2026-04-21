@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/ab28e6f0a9.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <section>
+  <div class="container">
+    <div class="row">
+      <div class="movies__header">
+      <h2 class="section__title movies__header--title">
+        First 6 Fast & Furious Movies
+      </h2>
+      <select id="filter" onchange="filterMovies(event)">
+        <option value="" disabled selected>Sort</option>
+        <option value="A_TO_Z">A to Z</option>
+        <option value="Z_TO_A">Z to A</option>
+        <option value="NEWEST">Newest</option>
+        <option value="OLDEST">Oldest</option>
+      </select>
+      </div>
+      <div class="movies">
+        <i class="fa-solid fa-spinner movies__loading--spinner"></i>
+      </div>
+    </div>
+  </div>
+</section>
   <div class="container">
     <div class="row">
       <div class="user-list">
@@ -15,13 +38,23 @@
               <h3>Movie Title</h3>
                 <p><b>Year</b> 2001</p>
                 <p><b>imdbID</b> 0000000</p>
-                <p><b>Poster:</b> <a href="https://website.website" target="_blank">website.website</a></p>
+                <p><b>Poster:</b> <a href="https://website.website">website.website</a></p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <footer>
+    <div class="container">
+      <div class="row row__column">
+        <div class="footer__list">
+          <a href="#" class="footer__link">Top</a>
+        </div>
+        <div class="footer__copyright">Copyright &copy; First 6 Fast & Furious Movies</div>
+      </div>
+    </div>
+  </footer>
 </body>
 <script src="app.js"></script>
 </html>
