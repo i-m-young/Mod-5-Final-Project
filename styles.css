@@ -21,7 +21,7 @@ img {
 }
 
 .container {
-  padding-top: 56px;
+  padding-top: 36px;
 }
 
 .row {
@@ -117,15 +117,6 @@ FOOTER
 
 footer {
   background-color: #242424;
-}
-
-.footer__logo {
-  display: flex;
-}
-
-.footer__logo--img {
-  width: 160px;
-  filter: grayscale(1) invert(1);
 }
 
 .footer__link,
