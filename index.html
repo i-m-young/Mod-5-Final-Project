@@ -9,23 +9,25 @@
 </head>
 <body>
   <section>
-    <div class="post__search">
-    <a href="/index.html">
-      <button>← Back</button>
-    </a>
-    <div class="post__search--container">
-      <label class="post__search--label">
-        Search by Name
-      </label>
-      <input type="text" placeholder="Movie Title" onchange="onSearchChange(event)">
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="movies__header">
-      <h2 class="section__title movies__header--title">
+    <h2 class="section__title movies__header--title">
         First 6 Fast & Furious Movies
       </h2>
+    <div class="container">
+      <div class="row">
+        <div class="post__search">
+          <div class="post__search--container">
+            <label class="post__search--label">
+              Search by Name:
+            </label>
+            <input type="text" placeholder="Movie Title" onchange="onSearchChange(event)">
+          </div>
+    </div>
+  </div>
+    <div class="row">
+      <div class="movies__header">
+        <label class="post__search--label">
+        Filter by:
+      </label>
       <select id="filter" onchange="filterMovies(event)">
         <option value="" disabled selected>Sort</option>
         <option value="A_TO_Z">A to Z</option>
@@ -34,9 +36,9 @@
         <option value="OLDEST">Oldest</option>
       </select>
       </div>
-      <div class="movies">
+      <!-- <div class="movies">
         <i class="fa-solid fa-spinner movies__loading--spinner"></i>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
