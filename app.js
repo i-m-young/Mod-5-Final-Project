@@ -8,7 +8,19 @@ const userListEl = document.querySelector(".user-list");
 
 let movies = [];
 
+function onSearchChange(event) {
+  const title = event.target.value.toLowerCase();
+
+  const filteredMovies = movies.filter((movie) =>
+  movie.Title.toLowerCase().includes(title)
+  );
+
+  userListEl.innerHTML = filteredMovies
+  .map((movie) => movieHTML(movie)).join("");
+}
+
 async function getMovies() {
+  const title = localStorage.getItem("Title");
   const res = await fetch("https://www.omdbapi.com/?apikey=add5cb2b&s=fast");
   const data = await res.json();
   return data.Search.slice(0, 6);
@@ -39,7 +51,7 @@ function filterMovies(event) {
 function movieHTML(movie) {
   return `<div class="user-card">
             <div class="user-card__container">
-                <h3>${movie.Title}</h3>
+                <h3 class="movie__title">${movie.Title}</h3>
                 <p><b>Year:</b> ${movie.Year}</p>
                 <p><b>imdbID:</b> ${movie.imdbID}</p>
                 <img src="${movie.Poster}" alt="${movie.Title} Poster" />

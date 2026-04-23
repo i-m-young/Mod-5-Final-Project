@@ -9,6 +9,17 @@
 </head>
 <body>
   <section>
+    <div class="post__search">
+    <a href="/index.html">
+      <button>← Back</button>
+    </a>
+    <div class="post__search--container">
+      <label class="post__search--label">
+        Search by Name
+      </label>
+      <input type="text" placeholder="Movie Title" onchange="onSearchChange(event)">
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="movies__header">
@@ -35,7 +46,7 @@
         <div class="user">
           <div class="user-card">
             <div class="user-card__container">
-              <h3>Movie Title</h3>
+              <h3 class="movie__title">Movie Title</h3>
                 <p><b>Year</b> 2001</p>
                 <p><b>imdbID</b> 0000000</p>
                 <p><b>Poster:</b> <a href="https://website.website">website.website</a></p>
