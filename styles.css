@@ -133,6 +133,10 @@ footer {
   color: #fff;
 }
 
+.footer__copyright {
+  margin-bottom: 24px;
+}
+
 .footer__list {
   margin: 20px 0 24px 0;
 }
