@@ -1,10 +1,15 @@
-// https://www.omdbapi.com/?i=tt3896198&apikey=add5cb2b&s=fast
+// https://www.omdbapi.com/?i=tt3896198&apikey=add5cb2b
 // SHOW 1ST 6 MOVIES + IMAGES
 // ADD SORT FUNCTION
 // ADD SKELETON LOADING STATE
 // ADD FOOTER, SORT (A/Z & OLD/NEW)
 
 const userListEl = document.querySelector(".user-list");
+const loadingEl = document.getElementById("loading");
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 let movies = [];
 
@@ -20,12 +25,15 @@ defaultSearch();
 async function onSearchChange(event) {
   const title = event.target.value;
 
-  if (!title) {
-    userListEl.innerHTML = "";
-    return;
-  }
+  loadingEl.classList.add("loading");
+  userListEl.innerHTML = "";
 
-  movies = await getMovies(title);
+  const [movies] = await Promise.all([
+    getMovies(title),
+    delay(1000)
+  ]);
+
+  loadingEl.classList.remove("loading");
 
   userListEl.innerHTML = movies
     .map((movie) => movieHTML(movie))

@@ -8,11 +8,19 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.page_content {
+  flex: 1;
 }
 
 img {
@@ -83,6 +91,10 @@ select {
   margin-bottom: 0;
 }
 
+.movie__title {
+  text-align: center;
+}
+
 .user-list {
   display: flex;
   flex-wrap: wrap;
@@ -106,14 +118,13 @@ select {
   display: flex;
   align-items: center;
   width: calc(100%/3);
-  height: calc(50%/2);
   padding: 16px;
   border-radius: 8px;
 }
 
 .user-card img {
   width: 100%;
-  height: 400px;
+  height: auto;
   object-fit: cover;
   border-radius: 4px;
 }
@@ -173,22 +184,18 @@ footer {
   }
 }
 
-/* .movies__loading {
+.movies {
   width: 100%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  padding-top: 60px;
   font-size: 60px;
-  color: #7342d6;
+  padding: 100px 0;
+  color: black;
 }
 
-.movies__loading--spinner {
-  display: none !important;
-}
-
-.movies__loading .movies__loading--spinner {
-  display: block !important;
+.movies.loading {
+  display: flex;
 }
 
 .fa-spinner {
@@ -196,11 +203,6 @@ footer {
 }
 
 @keyframes rotate {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-} */
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}

@@ -8,56 +8,58 @@
     <script src="https://kit.fontawesome.com/ab28e6f0a9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <section>
-    <h2 class="section__title movies__header--title">
+  <main class="page_content">
+    <section>
+      <h2 class="section__title movies__header--title">
         Film & Series Finder
       </h2>
+      <div class="container">
+        <div class="row">
+          <div class="post__search">
+            <div class="post__search--container">
+              <label class="post__search--label">
+                Search by Name:
+              </label>
+              <input type="text" placeholder="Movie Title" onchange="onSearchChange(event)">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="movies__header">
+            <label class="post__search--label">
+              Filter by:
+            </label>
+            <select id="filter" onchange="filterMovies(event)">
+              <option value="" disabled selected>Sort</option>
+              <option value="A_TO_Z">A to Z</option>
+              <option value="Z_TO_A">Z to A</option>
+              <option value="NEWEST">Newest</option>
+              <option value="OLDEST">Oldest</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
     <div class="container">
       <div class="row">
-        <div class="post__search">
-          <div class="post__search--container">
-            <label class="post__search--label">
-              Search by Name:
-            </label>
-            <input type="text" placeholder="Movie Title" onchange="onSearchChange(event)">
-          </div>
-    </div>
-  </div>
-    <div class="row">
-      <div class="movies__header">
-        <label class="post__search--label">
-        Filter by:
-      </label>
-      <select id="filter" onchange="filterMovies(event)">
-        <option value="" disabled selected>Sort</option>
-        <option value="A_TO_Z">A to Z</option>
-        <option value="Z_TO_A">Z to A</option>
-        <option value="NEWEST">Newest</option>
-        <option value="OLDEST">Oldest</option>
-      </select>
-      </div>
-      <!-- <div class="movies">
-        <i class="fa-solid fa-spinner movies__loading--spinner"></i>
-      </div> -->
-    </div>
-  </div>
-</section>
-  <div class="container">
-    <div class="row">
-      <div class="user-list">
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="container">
-      <div class="row row__column">
-        <div class="footer__list">
-          <a href="#" class="footer__link">Top</a>
+        <div class="movies" id="loading">
+          <i class="fa-solid fa-spinner movies__loading--spinner"></i>
         </div>
-        <div class="footer__copyright">Copyright &copy; Film & Series Finder</div>
+        <div class="user-list">
+        </div>
       </div>
     </div>
-  </footer>
+  </main>
+    <footer>
+      <div class="container">
+        <div class="row row__column">
+          <div class="footer__list">
+            <a href="#" class="footer__link">Top</a>
+          </div>
+          <div class="footer__copyright">Copyright &copy; Film & Series Finder</div>
+        </div>
+      </div>
+    </footer>
 </body>
 <script src="app.js"></script>
 </html>
