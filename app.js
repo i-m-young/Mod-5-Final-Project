@@ -8,22 +8,39 @@ const userListEl = document.querySelector(".user-list");
 
 let movies = [];
 
-function onSearchChange(event) {
-  const title = event.target.value.toLowerCase();
-
-  const filteredMovies = movies.filter((movie) =>
-  movie.Title.toLowerCase().includes(title)
-  );
-
-  userListEl.innerHTML = filteredMovies
-  .map((movie) => movieHTML(movie)).join("");
+async function defaultSearch() {
+  movies = await getMovies("batman");
+  userListEl.innerHTML = movies
+    .map((movie) => movieHTML(movie))
+    .join("");
 }
 
-async function getMovies() {
-  const title = localStorage.getItem("Title");
-  const res = await fetch("https://www.omdbapi.com/?apikey=add5cb2b&s=fast");
+defaultSearch();
+
+async function onSearchChange(event) {
+  const title = event.target.value;
+
+  if (!title) {
+    userListEl.innerHTML = "";
+    return;
+  }
+
+  movies = await getMovies(title);
+
+  userListEl.innerHTML = movies
+    .map((movie) => movieHTML(movie))
+    .join("");
+}
+
+async function getMovies(title) {
+  const res = await fetch(`https://www.omdbapi.com/?apikey=add5cb2b&s=${title}`);
   const data = await res.json();
-  return data.Search.slice(0, 6);
+
+  if (!data.Search) return [];
+
+  return data.Search
+    .filter(movie => movie.Title && movie.Year && movie.Poster)
+    .slice(0, 6);
 }
 
 async function renderMovies(filter) {
@@ -49,13 +66,14 @@ function filterMovies(event) {
 }
 
 function movieHTML(movie) {
+  if (!movie || !movie.Title) return "";
+
   return `<div class="user-card">
-            <div class="user-card__container">
-                <h3 class="movie__title">${movie.Title}</h3>
-                <p><b>Year:</b> ${movie.Year}</p>
-                <p><b>imdbID:</b> ${movie.imdbID}</p>
-                <img src="${movie.Poster}" alt="${movie.Title} Poster" />
-            </div>
-        </div>`;
+    <div class="user-card__container">
+      <h3 class="movie__title">${movie.Title || "N/A"}</h3>
+      <p><b>Year:</b> ${movie.Year || "N/A"}</p>
+      <p><b>imdbID:</b> ${movie.imdbID || "N/A"}</p>
+      <img src="${movie.Poster !== "N/A" ? movie.Poster : ""}" alt="${movie.Title} Poster" />
+    </div>
+  </div>`;
 }
-renderMovies();
